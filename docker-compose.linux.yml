@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  sample-mvc-site:
+    build:
+      context: .\SampleMVCSite\
+      dockerfile: .\Dockerfile
+    ports:
+      - "5808:5808"
+  selenium-test:
+    build:
+      context: .\SampleMVCSite.Test\
+      dockerfile: .\Dockerfile
+    depends_on:
+      - "sample-mvc-site"
